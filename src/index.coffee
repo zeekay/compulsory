@@ -1,4 +1,3 @@
-exec      = (require 'executive').interactive
 path      = require 'path'
 readPkgUp = require 'read-pkg-up'
 
@@ -40,7 +39,7 @@ requireSearch = (name, root) ->
 
 # Install module
 install = (name, root, version = 'latest') ->
-  exec "npm install #{name}@#{version}",
+  (require 'executive').interactive "npm install #{name}@#{version}",
     cwd: root
 
 module.exports = (name, opts = {}) ->
