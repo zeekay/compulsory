@@ -1,10 +1,14 @@
-should  = (require 'chai').should()
+should = (require 'chai').should()
 
 compulsory = require '../lib'
 
 describe 'compulsory', ->
   it 'should require existing modules correctly', ->
-    console.log 'add me'
+    mod = compulsory 'mod',
+      cwd: __dirname + '/fixtures/project'
+    mod.should.eq 42
 
   it 'should install missing modules automatically', ->
-    console.log 'add me'
+    exec = compulsory 'exec',
+      cwd: __dirname + '/fixtures/project-package-json'
+    should.exist exec.version
