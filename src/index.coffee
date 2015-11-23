@@ -1,11 +1,12 @@
 exec      = (require 'executive').interactive
 path      = require 'path'
-readPkgUp = require 'readPkgUp'
+readPkgUp = require 'read-pkg-up'
 
 # Traverse up directory structure looking for package.json
 readPkg = (name) ->
-  {pkg, path} = readPkgUp.sync()
-  pkg.path = path
+  res      = readPkgUp.sync()
+  pkg      = res.pkg
+  pkg.path = res.path
   pkg
 
 # Determine root of project based on package.json
@@ -23,9 +24,9 @@ determineVersion = (pkg, name) ->
   pkg.dependencies[name] ? 'latest'
 
 # Require module safely
-tryRequire = (path) ->
+tryRequire = (mod) ->
   try
-    require path
+    require mod
   catch err
     null
 
@@ -44,6 +45,8 @@ install = (name, root, version = 'latest') ->
 
 module.exports = (name, opts = {}) ->
   opts.silent ?= false
+
+  console.log name
 
   # Get package.json, determine project root, determine version to install
   pkg     = readPkg()
