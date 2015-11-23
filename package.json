@@ -12,7 +12,7 @@
     "coffee-script": "^1.10.0",
     "mocha": "^2.3.4",
     "postmortem": "^0.2.1",
-    "shortcake": "^0.4.7",
+    "shortcake": "^0.4.8",
     "vigil": "^0.5.7"
   },
   "scripts": {
