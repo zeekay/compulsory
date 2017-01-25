@@ -1,6 +1,8 @@
 # compulsory
 ### Require, really.
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/zeekay/compulsory.svg)](https://greenkeeper.io/)
+
 Require module, installing it if necessary.
 
 ## Install
